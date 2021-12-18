@@ -29,7 +29,23 @@ productsRouter.post(
   productsController.create,
 );
 
-productsRouter.put('/:id', productsController.update);
+productsRouter.put(
+  '/:id',
+  celebrate({
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      price: Joi.number().precision(2),
+      quantity: Joi.number().required(),
+    },
+  }),
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().uuid().required(),
+    },
+  }),
+
+  productsController.update,
+);
 
 productsRouter.delete('/:id', productsController.delete);
 
