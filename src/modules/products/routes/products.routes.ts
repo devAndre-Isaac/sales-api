@@ -17,7 +17,17 @@ productsRouter.get(
   productsController.show,
 );
 
-productsRouter.post('/', productsController.create);
+productsRouter.post(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      price: Joi.number().precision(2),
+      quantity: Joi.number().required(),
+    },
+  }),
+  productsController.create,
+);
 
 productsRouter.put('/:id', productsController.update);
 
