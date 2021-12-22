@@ -1,11 +1,11 @@
 import AppError from '@shared/errors/AppError';
-import { compare, hash } from 'bcryptjs';
+import { compare } from 'bcryptjs';
 import { getCustomRepository } from 'typeorm';
 import User from '../typeorm/enitites/User';
 import UsersRepository from '../typeorm/repositories/UsersRepository';
 
 interface IRequest {
-  name: string;
+  name?: string;
   email: string;
   password: string;
 }
