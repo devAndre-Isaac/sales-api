@@ -21,6 +21,7 @@ interface ISendMail {
   subject: string;
   templateData: IParseMailTemplate;
 }
+
 export default class EtherealMail {
   static async sendMail({
     to,
@@ -44,7 +45,7 @@ export default class EtherealMail {
 
     const message = await transporter.sendMail({
       from: {
-        name: from?.name || 'Equipe API-vendas',
+        name: from?.name || 'Equipe API Vendas',
         address: from?.email || 'equipe@apivendas.com.br',
       },
       to: {
@@ -54,5 +55,8 @@ export default class EtherealMail {
       subject,
       html: await mailTemplate.parse(templateData),
     });
+
+    console.log('Message sent: %s', message.messageId);
+    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
   }
 }
