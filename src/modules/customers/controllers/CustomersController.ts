@@ -13,6 +13,7 @@ export default class CustomersController {
 
     return response.json(customers);
   }
+
   public async show(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
 
@@ -22,6 +23,7 @@ export default class CustomersController {
 
     return response.json(customer);
   }
+
   public async create(request: Request, response: Response): Promise<Response> {
     const { name, email } = request.body;
 
@@ -34,6 +36,7 @@ export default class CustomersController {
 
     return response.json(customer);
   }
+
   public async update(request: Request, response: Response): Promise<Response> {
     const { name, email } = request.body;
     const { id } = request.params;
@@ -48,6 +51,7 @@ export default class CustomersController {
 
     return response.json(customer);
   }
+
   public async delete(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
 
