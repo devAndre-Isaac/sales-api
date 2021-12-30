@@ -19,3 +19,14 @@ customersRouter.get(
   }),
   customersController.show,
 );
+
+customersRouter.post(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      email: Joi.string().email().required(),
+    },
+  }),
+  customersController.create,
+);
