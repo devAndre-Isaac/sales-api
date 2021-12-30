@@ -44,3 +44,15 @@ customersRouter.put(
   }),
   customersController.update,
 );
+
+customersRouter.delete(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().uuid().required(),
+    },
+  }),
+  customersController.delete,
+);
+
+export default customersRouter;
