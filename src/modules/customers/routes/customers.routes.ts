@@ -30,3 +30,17 @@ customersRouter.post(
   }),
   customersController.create,
 );
+
+customersRouter.put(
+  '/:id',
+  celebrate({
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      email: Joi.string().email().required(),
+    },
+    [Segments.PARAMS]: {
+      id: Joi.string().uuid().required(),
+    },
+  }),
+  customersController.update,
+);
