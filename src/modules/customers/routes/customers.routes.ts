@@ -9,3 +9,13 @@ const customersController = new CustomersController();
 customersRouter.use(isAuthenticated);
 
 customersRouter.get('/', customersController.index);
+
+customersRouter.get(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().uuid().required(),
+    },
+  }),
+  customersController.show,
+);
