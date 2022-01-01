@@ -4,7 +4,7 @@ import Order from '../entities/Order';
 
 interface IProduct {
   product_id: string;
-  preco: number;
+  price: number;
   quantity: number;
 }
 interface IRequest {
