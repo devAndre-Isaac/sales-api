@@ -15,4 +15,15 @@ ordersRouter.get(
   ordersController.show,
 );
 
+ordersRouter.post(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      customer_id: Joi.string().uuid().required(),
+      products: Joi.required(),
+    },
+  }),
+  ordersController.create,
+);
+
 export default ordersRouter;
