@@ -23,7 +23,7 @@ export default function isAuthenticated(
   const [, token] = authHeader.split(' ');
 
   try {
-    const decodeToken = verify(token, authConfig.jwt.secret);
+    const decodeToken = verify(token, authConfig.jwt.secret as any);
 
     const { sub } = decodeToken as ITokenPayload;
 
