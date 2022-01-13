@@ -4,13 +4,10 @@ import path from 'path';
 import UsersRepository from '../typeorm/repositories/UsersRepository';
 import UsersTokenRepository from '../typeorm/repositories/UsersTokenRepository';
 import EtherealMail from '@config/mail/EtherealMail';
-
-interface IRequest {
-  email: string;
-}
+import { IRequestSendForgot } from '../interfaces/users';
 
 class SendForgotPasswordEmailService {
-  public async execute({ email }: IRequest): Promise<void> {
+  public async execute({ email }: IRequestSendForgot): Promise<void> {
     const usersRepository = getCustomRepository(UsersRepository);
     const userTokenRepository = getCustomRepository(UsersTokenRepository);
 

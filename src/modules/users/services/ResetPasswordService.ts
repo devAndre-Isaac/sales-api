@@ -4,14 +4,10 @@ import UsersRepository from '../typeorm/repositories/UsersRepository';
 import UsersTokenRepository from '../typeorm/repositories/UsersTokenRepository';
 import { isAfter, addHours } from 'date-fns';
 import { hash } from 'bcryptjs';
-
-interface IRequest {
-  token: string;
-  password: string;
-}
+import { IRequestResetPass } from '../interfaces/users';
 
 class ResetPasswordService {
-  public async execute({ token, password }: IRequest): Promise<void> {
+  public async execute({ token, password }: IRequestResetPass): Promise<void> {
     const usersRepository = getCustomRepository(UsersRepository);
     const userTokenRepository = getCustomRepository(UsersTokenRepository);
 
